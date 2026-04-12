@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -47,6 +49,30 @@ public class User {
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private final Set<Role> roles = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_permissions",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
+    )
+    private final Set<Permission> directPermissions = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_denied_permissions",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "denied_permission_id")
+    )
+    private final Set<Permission> deniedPermissions = new HashSet<>();
+
     protected User() {
     }
 
@@ -70,5 +96,31 @@ public class User {
         this.birthDate = birthDate;
         this.gender = gender;
         this.profileImageUrl = profileImageUrl;
+    }
+
+    public Set<Permission> getAllowedPermissions() {
+        Set<Permission> allowedPermissions = new HashSet<>();
+        roles.forEach(
+                role -> allowedPermissions.addAll(role.getPermissions())
+        );
+        allowedPermissions.addAll(directPermissions);
+        allowedPermissions.removeAll(deniedPermissions);
+        return allowedPermissions;
+    }
+
+    public boolean hasRole(Role role) {
+        return roles.contains(role);
+    }
+
+    public boolean hasRole(String roleName) {
+        return roles.stream().anyMatch(r -> r.getName().equalsIgnoreCase(roleName));
+    }
+
+    public boolean hasPermission(Permission permission) {
+        return getAllowedPermissions().contains(permission);
+    }
+
+    public boolean hasPermission(String permissionName) {
+        return getAllowedPermissions().stream().anyMatch(p -> p.getName().equalsIgnoreCase(permissionName));
     }
 }
