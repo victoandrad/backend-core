@@ -108,24 +108,4 @@ public class AuthService {
                 user.getEmail().getValue()
         );
     }
-
-    // ==============================
-
-    public UserDetails loadUserByUsername(String username) {
-        return userRepository.findByUsername(username)
-                .map(CustomUserDetails::new)
-                .orElseThrow(
-                        () -> new UsernameNotFoundException(username)
-                );
-    }
-
-    // ==============================
-
-    public UserDetails loadUserByEmail(String email) {
-        return userRepository.findByEmail(new Email(email))
-                .map(CustomUserDetails::new)
-                .orElseThrow(
-                        () -> new UsernameNotFoundException(email)
-                );
-    }
 }

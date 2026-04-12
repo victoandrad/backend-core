@@ -1,6 +1,6 @@
 package com.victoandrad.backend.config.security.userdetails;
 
-import com.victoandrad.backend.service.AuthService;
+import com.victoandrad.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,15 +14,15 @@ public class CustomUserDetailsService implements UserDetailsService {
     // METHODS
     // ==============================
 
-    private final AuthService authService;
+    private final UserRepository userRepository;
 
     // ==============================
     // CONSTRUCTORS
     // ==============================
 
     @Autowired
-    public CustomUserDetailsService(AuthService authService) {
-        this.authService = authService;
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     // ==============================
@@ -31,6 +31,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return authService.loadUserByUsername(username);
+        return userRepository.findByUsername(username)
+                .map(CustomUserDetails::new)
+                .orElseThrow(
+                        () -> new UsernameNotFoundException(username)
+                );
     }
 }
