@@ -18,6 +18,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    // ==============================
+    // METHODS
+    // ==============================
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
         return httpSecurity
@@ -33,10 +37,14 @@ public class SecurityConfig {
                 .build();
     }
 
+    // ==============================
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
+    // ==============================
 
     @Bean
     public PasswordEncoder passwordEncoder() {

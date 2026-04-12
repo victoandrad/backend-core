@@ -6,8 +6,16 @@ import lombok.Getter;
 @Embeddable
 public class Email {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     @Getter
     private String value;
+
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
 
     protected Email() {
     }

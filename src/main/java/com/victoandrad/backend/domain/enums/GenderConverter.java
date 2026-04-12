@@ -6,10 +6,16 @@ import jakarta.persistence.Converter;
 @Converter(autoApply = true)
 public class GenderConverter implements AttributeConverter<Gender, Integer> {
 
+    // ==============================
+    // METHODS
+    // ==============================
+
     @Override
     public Integer convertToDatabaseColumn(Gender gender) {
         return gender != null ? gender.getId() : null;
     }
+
+    // ==============================
 
     @Override
     public Gender convertToEntityAttribute(Integer id) {

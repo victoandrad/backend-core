@@ -10,12 +10,24 @@ import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     @Getter
     private final User user;
+
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
 
     public CustomUserDetails(User user) {
         this.user = user;
     }
+
+    // ==============================
+    // METHODS
+    // ==============================
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -25,30 +37,42 @@ public class CustomUserDetails implements UserDetails {
                 .toList();
     }
 
+    // ==============================
+
     @Override
     public @Nullable String getPassword() {
         return user.getPassword();
     }
+
+    // ==============================
 
     @Override
     public String getUsername() {
         return user.getUsername();
     }
 
+    // ==============================
+
     @Override
     public boolean isAccountNonExpired() {
         return UserDetails.super.isAccountNonExpired();
     }
+
+    // ==============================
 
     @Override
     public boolean isAccountNonLocked() {
         return UserDetails.super.isAccountNonLocked();
     }
 
+    // ==============================
+
     @Override
     public boolean isCredentialsNonExpired() {
         return UserDetails.super.isCredentialsNonExpired();
     }
+
+    // ==============================
 
     @Override
     public boolean isEnabled() {

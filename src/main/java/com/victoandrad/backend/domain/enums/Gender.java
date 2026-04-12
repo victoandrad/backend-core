@@ -3,6 +3,11 @@ package com.victoandrad.backend.domain.enums;
 import lombok.Getter;
 
 public enum Gender {
+
+    // ==============================
+    // FIELDS
+    // ==============================
+
     MALE(1, "Male"),
     FEMALE(2, "Female"),
     NON_BINARY(3, "Non-binary"),
@@ -15,10 +20,18 @@ public enum Gender {
     @Getter
     private final String label;
 
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
+
     Gender(int id, String name) {
         this.id = id;
         this.label = name;
     }
+
+    // ==============================
+    // METHODS
+    // ==============================
 
     public static Gender fromId(int id) {
         for (Gender gender : Gender.values()) {

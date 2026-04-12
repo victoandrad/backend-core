@@ -11,6 +11,10 @@ import java.util.Set;
 @Getter
 public class Role {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,6 +29,10 @@ public class Role {
             inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
     private final Set<Permission> permissions = new HashSet<>();
+
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
 
     protected Role() {
     }

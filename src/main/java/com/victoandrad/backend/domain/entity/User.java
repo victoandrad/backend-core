@@ -15,6 +15,10 @@ import java.util.Set;
 @Getter
 public class User {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -73,6 +77,10 @@ public class User {
     )
     private final Set<Permission> deniedPermissions = new HashSet<>();
 
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
+
     protected User() {
     }
 
@@ -91,6 +99,10 @@ public class User {
         this.phone = phone;
         this.password = password;
     }
+
+    // ==============================
+    // METHODS
+    // ==============================
 
     public Set<Permission> getAllowedPermissions() {
         Set<Permission> allowedPermissions = new HashSet<>();

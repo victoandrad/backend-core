@@ -6,8 +6,16 @@ import lombok.Getter;
 @Embeddable
 public class Phone {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     @Getter
     private String value;
+
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
 
     protected Phone() {
     }

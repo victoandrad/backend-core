@@ -12,12 +12,20 @@ import java.time.Instant;
 @Component
 public class TokenConfig {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     @Value("${jwt.secret}")
     private String secret;
 
     @Getter
     @Value("${jwt.expiration-time}")
     private Long expirationTime;
+
+    // ==============================
+    // METHODS
+    // ==============================
 
     public String generateToken(User user) {
         Algorithm algorithm = Algorithm.HMAC256(secret);

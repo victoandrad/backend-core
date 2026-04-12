@@ -8,12 +8,20 @@ import lombok.Getter;
 @Getter
 public class Permission {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name", nullable = false, unique = true, updatable = false)
     private String name;
+
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
 
     protected Permission() {
     }

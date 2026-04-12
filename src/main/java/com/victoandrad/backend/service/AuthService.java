@@ -23,6 +23,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthService {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     private final UserRepository userRepository;
 
     private final AuthenticationManager authenticationManager;
@@ -30,6 +34,10 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     private final TokenConfig tokenConfig;
+
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
 
     @Autowired
     public AuthService(
@@ -44,6 +52,10 @@ public class AuthService {
         this.tokenConfig = tokenConfig;
     }
 
+    // ==============================
+    // METHODS
+    // ==============================
+
     public LoginResponse login(LoginRequest request) {
         UsernamePasswordAuthenticationToken userAndPass = new UsernamePasswordAuthenticationToken(
                 request.email(),
@@ -51,7 +63,6 @@ public class AuthService {
         );
 
         Authentication authentication = authenticationManager.authenticate(userAndPass);
-
         Object principal = authentication.getPrincipal();
 
         if (!(principal instanceof CustomUserDetails userDetails)) {
@@ -63,7 +74,6 @@ public class AuthService {
         }
 
         String token = tokenConfig.generateToken(userDetails.getUser());
-
         return new LoginResponse(
                 token,
                 "Bearer",
@@ -71,8 +81,9 @@ public class AuthService {
         );
     }
 
-    public RegisterResponse register(RegisterRequest request) {
+    // ==============================
 
+    public RegisterResponse register(RegisterRequest request) {
         if (userRepository.existsByEmail(new Email(request.email()))) {
             throw new BusinessException("Email already in use");
         }
@@ -91,13 +102,14 @@ public class AuthService {
         );
 
         User user = userRepository.save(newUser);
-
         return new RegisterResponse(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail().getValue()
         );
     }
+
+    // ==============================
 
     public UserDetails loadUserByUsername(String username) {
         return userRepository.findByUsername(username)
@@ -106,6 +118,8 @@ public class AuthService {
                         () -> new UsernameNotFoundException(username)
                 );
     }
+
+    // ==============================
 
     public UserDetails loadUserByEmail(String email) {
         return userRepository.findByEmail(new Email(email))

@@ -1,6 +1,5 @@
 package com.victoandrad.backend.controller.v1;
 
-import com.victoandrad.backend.domain.entity.User;
 import com.victoandrad.backend.dto.request.LoginRequest;
 import com.victoandrad.backend.dto.request.RegisterRequest;
 import com.victoandrad.backend.dto.response.LoginResponse;
@@ -19,12 +18,24 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     private final AuthService authService;
+
+    // ==============================
+    // CONSTRUCTORS
+    // ==============================
 
     @Autowired
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
+
+    // ==============================
+    // METHODS
+    // ==============================
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
@@ -32,25 +43,23 @@ public class AuthController {
         return ResponseEntity.ok(response);
     }
 
+    // ==============================
+
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(
             @Valid @RequestBody RegisterRequest request,
             UriComponentsBuilder uriComponentsBuilder
     ) {
 
-        User user = authService.register(request);
+        RegisterResponse response = authService.register(request);
 
         var uri = uriComponentsBuilder
                 .path("/{id}")
-                .buildAndExpand(user.getId())
+                .buildAndExpand(response.id())
                 .toUri();
 
         return ResponseEntity
                 .created(uri)
-                .body(new RegisterResponse(
-                        user.getId(),
-                        user.getUsername(),
-                        user.getEmail().getValue())
-                );
+                .body(response);
     }
 }
