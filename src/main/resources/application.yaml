@@ -1,3 +1,9 @@
 spring:
   application:
     name: backend
+
+
+
+jwt:
+  secret: secret
+  expiration-time: 3600000

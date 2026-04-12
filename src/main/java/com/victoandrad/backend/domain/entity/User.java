@@ -82,10 +82,7 @@ public class User {
             String username,
             Email email,
             Phone phone,
-            String password,
-            LocalDate birthDate,
-            Gender gender,
-            String profileImageUrl
+            String password
     ) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -93,9 +90,6 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.birthDate = birthDate;
-        this.gender = gender;
-        this.profileImageUrl = profileImageUrl;
     }
 
     public Set<Permission> getAllowedPermissions() {
