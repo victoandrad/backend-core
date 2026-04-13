@@ -2,6 +2,7 @@ package com.victoandrad.backend.config.security.userdetails;
 
 import com.victoandrad.backend.domain.entity.User;
 import lombok.Getter;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +31,7 @@ public class CustomUserDetails implements UserDetails {
     // ==============================
 
     @Override
+    @NonNull
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getAllowedPermissions()
                 .stream()
@@ -47,6 +49,7 @@ public class CustomUserDetails implements UserDetails {
     // ==============================
 
     @Override
+    @NonNull
     public String getUsername() {
         return user.getUsername();
     }

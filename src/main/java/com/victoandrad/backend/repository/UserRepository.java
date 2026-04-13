@@ -2,6 +2,7 @@ package com.victoandrad.backend.repository;
 
 import com.victoandrad.backend.domain.entity.User;
 import com.victoandrad.backend.domain.valueobject.Email;
+import com.victoandrad.backend.domain.valueobject.Phone;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByEmail(Email email);
 
-    Optional<User> findByPhone(String phone);
+    Optional<User> findByPhone(Phone phone);
 
     boolean existsByUsername(String username);
 
