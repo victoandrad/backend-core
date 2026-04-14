@@ -1,27 +1,93 @@
-### GET request to example server
+### BASE URL
 
-GET http://localhost:8080/api/v1/test/
+@baseUrl = http://localhost:8080/api/v1
 
-###
+### ==============================
 
-POST http://localhost:8080/api/v1/auth/register
-Content-Type: application/json
+### AUTH
 
-{
-  "firstName": "Victor",
-  "lastName": "Andrade",
-  "username": "victoandrad",
-  "email": "victor64gaming@gmail.com",
-  "phone": "43991212893",
-  "password": "12345678"
-}
+### ==============================
 
-###
+### Login (salva token automaticamente)
 
-POST http://localhost:8080/api/v1/auth/login
+# @name login
+
+POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
   "email": "victor64gaming@gmail.com",
   "password": "12345678"
 }
+
+###
+
+### ==============================
+
+### PERMISSIONS (PROTEGIDO)
+
+### ==============================
+
+### Criar permission
+
+POST {{baseUrl}}/permissions
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "name": "USER_READ"
+}
+
+###
+
+### Listar permissions
+
+GET {{baseUrl}}/permissions
+Authorization: Bearer {{login.response.body.token}}
+
+###
+
+### ==============================
+
+### ROLES (PROTEGIDO)
+
+### ==============================
+
+### Criar role
+
+POST {{baseUrl}}/roles
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "name": "ADMIN",
+  "permissionIds": [1, 2]
+}
+
+###
+
+### Listar roles
+
+GET {{baseUrl}}/roles
+Authorization: Bearer {{login.response.body.token}}
+
+###
+
+### Atualizar role
+
+PUT {{baseUrl}}/roles/1
+Authorization: Bearer {{login.response.body.token}}
+Content-Type: application/json
+
+{
+  "permissionIds": [1]
+}
+
+###
+
+### Deletar role
+
+DELETE {{baseUrl}}/roles/1
+Authorization: Bearer {{login.response.body.token}}
+
+###

@@ -1,4 +1,4 @@
-package com.victoandrad.backend.controller.v1;
+package com.victoandrad.backend.controller;
 
 import com.victoandrad.backend.dto.auth.request.LoginRequest;
 import com.victoandrad.backend.dto.auth.request.RegisterRequest;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     // ==============================

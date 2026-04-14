@@ -1,7 +1,7 @@
 package com.victoandrad.backend.service;
 
 import com.victoandrad.backend.config.TokenConfig;
-import com.victoandrad.backend.config.security.userdetails.CustomUserDetails;
+import com.victoandrad.backend.config.userdetails.CustomUserDetails;
 import com.victoandrad.backend.domain.entity.User;
 import com.victoandrad.backend.domain.valueobject.Email;
 import com.victoandrad.backend.domain.valueobject.Phone;

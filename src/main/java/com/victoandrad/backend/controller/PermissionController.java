@@ -1,4 +1,4 @@
-package com.victoandrad.backend.controller.v1;
+package com.victoandrad.backend.controller;
 
 import com.victoandrad.backend.dto.permission.request.PermissionCreateRequest;
 import com.victoandrad.backend.dto.permission.response.PermissionResponse;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/permissions")
+@RequestMapping("/api/permissions")
 public class PermissionController {
 
     // ==============================

@@ -1,4 +1,4 @@
-package com.victoandrad.backend.config.security.userdetails;
+package com.victoandrad.backend.config.userdetails;
 
 import com.victoandrad.backend.domain.entity.User;
 import lombok.Getter;

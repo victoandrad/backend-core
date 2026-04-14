@@ -1,4 +1,4 @@
-package com.victoandrad.backend.controller.v1;
+package com.victoandrad.backend.controller;
 
 import com.victoandrad.backend.dto.role.request.RoleCreateRequest;
 import com.victoandrad.backend.dto.role.request.RoleUpdateRequest;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/api/roles")
 public class RoleController {
 
     // ==============================
