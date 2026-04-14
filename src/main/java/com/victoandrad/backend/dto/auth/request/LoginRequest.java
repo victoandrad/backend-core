@@ -1,4 +1,4 @@
-package com.victoandrad.backend.dto.request;
+package com.victoandrad.backend.dto.auth.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

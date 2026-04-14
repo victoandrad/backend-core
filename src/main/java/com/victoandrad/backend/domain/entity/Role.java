@@ -8,17 +8,18 @@ import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-@Getter
 public class Role {
 
     // ==============================
     // FIELDS
     // ==============================
 
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
     @Column(name = "name", nullable = false, unique = true, updatable = false)
     private String name;
 
@@ -46,5 +47,30 @@ public class Role {
             throw new IllegalArgumentException("Invalid role format");
         }
         this.name = normalized;
+    }
+
+    // ==============================
+    // METHODS
+    // ==============================
+
+    public void addPermission(Permission permission) {
+        permissions.add(permission);
+    }
+
+    public void removePermission(Permission permission) {
+        permissions.remove(permission);
+    }
+
+    public boolean hasPermission(Permission permission) {
+        return permissions.contains(permission);
+    }
+
+    public Set<Permission> getPermissions() {
+        return Set.copyOf(permissions);
+    }
+
+    public void setPermissions(Set<Permission> permissions) {
+        this.permissions.clear();
+        this.permissions.addAll(permissions);
     }
 }

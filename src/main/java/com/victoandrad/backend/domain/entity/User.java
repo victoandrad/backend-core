@@ -12,44 +12,53 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Getter
 public class User {
 
     // ==============================
     // FIELDS
     // ==============================
 
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Getter
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
+    @Getter
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Getter
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
+    @Getter
     @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "email", nullable = false, unique = true))
     private Email email;
 
+    @Getter
     @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "phone", nullable = false))
     private Phone phone;
 
+    @Getter
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Getter
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
+    @Getter
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
 
+    @Getter
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 
@@ -118,15 +127,19 @@ public class User {
         return roles.contains(role);
     }
 
-    public boolean hasRole(String roleName) {
-        return roles.stream().anyMatch(r -> r.getName().equalsIgnoreCase(roleName));
-    }
-
     public boolean hasPermission(Permission permission) {
         return getAllowedPermissions().contains(permission);
     }
 
-    public boolean hasPermission(String permissionName) {
-        return getAllowedPermissions().stream().anyMatch(p -> p.getName().equalsIgnoreCase(permissionName));
+    public Set<Role> getRoles() {
+        return Set.copyOf(roles);
+    }
+
+    public Set<Permission> getDirectPermissions() {
+        return Set.copyOf(directPermissions);
+    }
+
+    public Set<Permission> getDeniedPermissions() {
+        return Set.copyOf(deniedPermissions);
     }
 }
