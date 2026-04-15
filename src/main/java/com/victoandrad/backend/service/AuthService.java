@@ -74,8 +74,7 @@ public class AuthService {
         String token = tokenConfig.generateToken(userDetails.getUser());
         return new LoginResponse(
                 token,
-                "Bearer",
-                tokenConfig.getExpirationTime()
+                "Bearer"
         );
     }
 
