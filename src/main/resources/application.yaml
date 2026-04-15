@@ -3,6 +3,8 @@ spring:
     name: backend
   config:
     import: optional:file:.env[.properties]
+  profiles:
+    active: dev,test
 
   datasource:
     url: ${DB_URL}
