@@ -12,6 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -51,29 +52,49 @@ public class SecurityFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
+        try {
 
-        String authorizedHeader = request.getHeader("Authorization");
-        if (Strings.isNotEmpty(authorizedHeader) && authorizedHeader.startsWith("Bearer ")
-        && SecurityContextHolder.getContext().getAuthentication() == null) {
+            String header = request.getHeader("Authorization");
 
-            String token = authorizedHeader.substring("Bearer ".length());
-            Optional<JWTUserData> optUser = tokenConfig.validateToken(token);
-            if (optUser.isPresent()) {
+            if (Strings.isNotEmpty(header)
+                    && header.startsWith("Bearer ")
+                    && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-                JWTUserData userData = optUser.get();
+                String token = header.substring(7);
 
-                UserDetails userDetails = userDetailsService.loadUserByUsername(userData.email());
+                Optional<JWTUserData> optUser = tokenConfig.validateToken(token);
 
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                        userDetails,
-                        null,
-                        userDetails.getAuthorities()
-                );
+                if (optUser.isPresent()) {
 
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+                    JWTUserData userData = optUser.get();
 
+                    UserDetails userDetails;
+
+                    try {
+                        userDetails = userDetailsService.loadUserByUsername(userData.email());
+                    } catch (UsernameNotFoundException ex) {
+                        // usuário não existe mais → token inválido
+                        SecurityContextHolder.clearContext();
+                        filterChain.doFilter(request, response);
+                        return;
+                    }
+
+                    UsernamePasswordAuthenticationToken auth =
+                            new UsernamePasswordAuthenticationToken(
+                                    userDetails,
+                                    null,
+                                    userDetails.getAuthorities()
+                            );
+
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                }
             }
+
+            filterChain.doFilter(request, response);
+
+        } catch (Exception ex) {
+            SecurityContextHolder.clearContext();
+            filterChain.doFilter(request, response);
         }
-        filterChain.doFilter(request, response);
     }
 }

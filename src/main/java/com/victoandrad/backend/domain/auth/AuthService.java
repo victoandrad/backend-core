@@ -1,6 +1,6 @@
 package com.victoandrad.backend.domain.auth;
 
-import com.victoandrad.backend.config.security.TokenConfig;
+import com.victoandrad.backend.config.TokenConfig;
 import com.victoandrad.backend.config.security.userdetails.CustomUserDetails;
 import com.victoandrad.backend.domain.user.User;
 import com.victoandrad.backend.domain.common.valueobject.Email;
