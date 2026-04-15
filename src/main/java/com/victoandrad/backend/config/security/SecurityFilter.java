@@ -1,5 +1,7 @@
 package com.victoandrad.backend.config.security;
 
+import com.victoandrad.backend.config.JWTUserData;
+import com.victoandrad.backend.config.TokenConfig;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

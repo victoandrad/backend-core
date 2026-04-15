@@ -1,4 +1,4 @@
-package com.victoandrad.backend.config.security;
+package com.victoandrad.backend.config;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

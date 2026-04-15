@@ -1,4 +1,4 @@
-package com.victoandrad.backend.config.security;
+package com.victoandrad.backend.config;
 
 import lombok.Builder;
 
