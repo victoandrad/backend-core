@@ -2,7 +2,7 @@ package com.victoandrad.backend.domain.permission;
 
 import com.victoandrad.backend.domain.permission.dto.PermissionCreateRequest;
 import com.victoandrad.backend.domain.permission.dto.PermissionResponse;
-import com.victoandrad.backend.domain.common.exception.NotFoundException;
+import com.victoandrad.backend.shared.exception.NotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

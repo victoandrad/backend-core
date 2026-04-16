@@ -1,4 +1,4 @@
-package com.victoandrad.backend.domain.system;
+package com.victoandrad.backend.infra.debug;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.access.prepost.PreAuthorize;

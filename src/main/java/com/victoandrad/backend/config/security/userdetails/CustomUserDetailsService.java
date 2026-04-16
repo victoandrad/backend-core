@@ -1,6 +1,6 @@
 package com.victoandrad.backend.config.security.userdetails;
 
-import com.victoandrad.backend.domain.common.valueobject.Email;
+import com.victoandrad.backend.shared.valueobject.Email;
 import com.victoandrad.backend.domain.user.UserRepository;
 import jakarta.transaction.Transactional;
 import org.jspecify.annotations.NonNull;

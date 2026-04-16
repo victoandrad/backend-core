@@ -3,8 +3,8 @@ package com.victoandrad.backend.domain.user;
 import com.victoandrad.backend.domain.permission.Permission;
 import com.victoandrad.backend.domain.role.Role;
 import com.victoandrad.backend.domain.user.enums.Gender;
-import com.victoandrad.backend.domain.common.valueobject.Email;
-import com.victoandrad.backend.domain.common.valueobject.Phone;
+import com.victoandrad.backend.shared.valueobject.Email;
+import com.victoandrad.backend.shared.valueobject.Phone;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -125,21 +125,31 @@ public class User {
         return allowedPermissions;
     }
 
+    // ==============================
+
     public boolean hasRole(Role role) {
         return roles.contains(role);
     }
+
+    // ==============================
 
     public boolean hasPermission(Permission permission) {
         return getAllowedPermissions().contains(permission);
     }
 
+    // ==============================
+
     public Set<Role> getRoles() {
         return Set.copyOf(roles);
     }
 
+    // ==============================
+
     public Set<Permission> getDirectPermissions() {
         return Set.copyOf(directPermissions);
     }
+
+    // ==============================
 
     public Set<Permission> getDeniedPermissions() {
         return Set.copyOf(deniedPermissions);

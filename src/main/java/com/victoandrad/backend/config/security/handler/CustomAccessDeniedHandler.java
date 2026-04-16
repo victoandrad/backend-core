@@ -13,6 +13,10 @@ import java.io.IOException;
 @Component
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
+    // ==============================
+    // METHODS
+    // ==============================
+
     @Override
     public void handle(
             @NonNull HttpServletRequest request,

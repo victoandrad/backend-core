@@ -1,12 +1,13 @@
 package com.victoandrad.backend.domain.permission;
 
+import com.victoandrad.backend.config.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.Getter;
 
 @Entity
 @Table(name = "permissions")
 @Getter
-public class Permission {
+public class Permission extends Auditable {
 
     // ==============================
     // FIELDS

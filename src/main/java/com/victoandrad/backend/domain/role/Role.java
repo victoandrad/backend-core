@@ -1,5 +1,6 @@
 package com.victoandrad.backend.domain.role;
 
+import com.victoandrad.backend.config.audit.Auditable;
 import com.victoandrad.backend.domain.permission.Permission;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role extends Auditable {
 
     // ==============================
     // FIELDS
@@ -58,17 +59,25 @@ public class Role {
         permissions.add(permission);
     }
 
+    // ==============================
+
     public void removePermission(Permission permission) {
         permissions.remove(permission);
     }
+
+    // ==============================
 
     public boolean hasPermission(Permission permission) {
         return permissions.contains(permission);
     }
 
+    // ==============================
+
     public Set<Permission> getPermissions() {
         return Set.copyOf(permissions);
     }
+
+    // ==============================
 
     public void setPermissions(Set<Permission> permissions) {
         this.permissions.clear();

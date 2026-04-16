@@ -13,6 +13,10 @@ import java.io.IOException;
 @Component
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
+    // ==============================
+    // METHODS
+    // ==============================
+
     @Override
     public void commence(
             @NonNull HttpServletRequest request,

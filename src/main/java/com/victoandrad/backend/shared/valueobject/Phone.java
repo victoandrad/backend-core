@@ -1,10 +1,10 @@
-package com.victoandrad.backend.domain.common.valueobject;
+package com.victoandrad.backend.shared.valueobject;
 
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
 
 @Embeddable
-public class Email {
+public class Phone {
 
     // ==============================
     // FIELDS
@@ -17,13 +17,13 @@ public class Email {
     // CONSTRUCTORS
     // ==============================
 
-    protected Email() {
+    protected Phone() {
     }
 
-    public Email(String value) {
-        if (value == null || !value.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            throw new IllegalArgumentException("Invalid email");
+    public Phone(String value) {
+        if (value == null || value.length() < 10) {
+            throw new IllegalArgumentException("Invalid phone number");
         }
-        this.value = value.toLowerCase();
+        this.value = value;
     }
 }

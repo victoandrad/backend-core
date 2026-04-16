@@ -1,7 +1,7 @@
 package com.victoandrad.backend.domain.user;
 
-import com.victoandrad.backend.domain.common.valueobject.Email;
-import com.victoandrad.backend.domain.common.valueobject.Phone;
+import com.victoandrad.backend.shared.valueobject.Email;
+import com.victoandrad.backend.shared.valueobject.Phone;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

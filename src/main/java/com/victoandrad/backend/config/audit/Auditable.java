@@ -1,10 +1,7 @@
 package com.victoandrad.backend.config.audit;
 
 import com.victoandrad.backend.domain.user.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
@@ -21,12 +18,17 @@ import java.time.Instant;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable {
 
+    // ==============================
+    // FIELDS
+    // ==============================
+
     @CreatedDate
     @Column(name = "created_date", nullable = false, updatable = false)
     private Instant createdDate;
 
     @CreatedBy
     @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false, updatable = false)
     private User createdBy;
 
     @LastModifiedDate
@@ -35,5 +37,6 @@ public abstract class Auditable {
 
     @LastModifiedBy
     @ManyToOne
+    @JoinColumn(name = "last_modified_by", nullable = false)
     private User lastModifiedBy;
 }

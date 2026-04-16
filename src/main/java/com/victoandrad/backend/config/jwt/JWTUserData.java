@@ -1,4 +1,4 @@
-package com.victoandrad.backend.config;
+package com.victoandrad.backend.config.jwt;
 
 import lombok.Builder;
 

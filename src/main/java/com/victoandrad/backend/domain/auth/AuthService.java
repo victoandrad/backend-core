@@ -1,16 +1,16 @@
 package com.victoandrad.backend.domain.auth;
 
-import com.victoandrad.backend.config.TokenConfig;
+import com.victoandrad.backend.config.jwt.TokenConfig;
 import com.victoandrad.backend.config.security.userdetails.CustomUserDetails;
 import com.victoandrad.backend.domain.user.User;
-import com.victoandrad.backend.domain.common.valueobject.Email;
-import com.victoandrad.backend.domain.common.valueobject.Phone;
+import com.victoandrad.backend.shared.valueobject.Email;
+import com.victoandrad.backend.shared.valueobject.Phone;
 import com.victoandrad.backend.domain.auth.dto.LoginRequest;
 import com.victoandrad.backend.domain.auth.dto.RegisterRequest;
 import com.victoandrad.backend.domain.auth.dto.LoginResponse;
 import com.victoandrad.backend.domain.auth.dto.RegisterResponse;
 import com.victoandrad.backend.domain.user.UserRepository;
-import com.victoandrad.backend.domain.common.exception.BusinessException;
+import com.victoandrad.backend.shared.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
