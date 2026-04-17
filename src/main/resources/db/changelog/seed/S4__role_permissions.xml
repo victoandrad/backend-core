@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+	<changeSet id="seed-role-permissions" author="system">
+
+		<!-- ROLE ADMIN - USER PERMISSIONS  -->
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="2"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="3"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="4"/>
+		</insert>
+
+		<!-- ROLE ADMIN - PERMISSION PERMISSIONS  -->
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="5"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="6"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="7"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="8"/>
+		</insert>
+
+		<!-- ROLE ADMIN - ROLE PERMISSIONS  -->
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="9"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="10"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="11"/>
+		</insert>
+
+		<insert tableName="role_permissions">
+			<column name="role_id" valueNumeric="1"/>
+			<column name="permission_id" valueNumeric="12"/>
+		</insert>
+
+	</changeSet>
+
+</databaseChangeLog>

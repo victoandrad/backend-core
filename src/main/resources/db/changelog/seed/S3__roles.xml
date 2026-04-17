@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+	<!-- ROLE -->
+	<changeSet id="seed-roles" author="system">
+		<insert tableName="roles">
+			<column name="id" valueNumeric="1"/>
+			<column name="name" value="ROLE_ADMIN"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>

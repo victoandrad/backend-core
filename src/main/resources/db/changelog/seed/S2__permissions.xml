@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+	<changeSet id="seed-permissions" author="victor">
+
+        <!-- USER PERMISSIONS  -->
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="1"/>
+			<column name="name" value="USER_CREATE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="2"/>
+			<column name="name" value="USER_READ"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="3"/>
+			<column name="name" value="USER_UPDATE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="4"/>
+			<column name="name" value="USER_DELETE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<!-- PERMISSION PERMISSIONS -->
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="5"/>
+			<column name="name" value="PERMISSION_CREATE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="6"/>
+			<column name="name" value="PERMISSION_READ"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="7"/>
+			<column name="name" value="PERMISSION_UPDATE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="8"/>
+			<column name="name" value="PERMISSION_DELETE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<!-- ROLE PERMISSIONS -->
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="9"/>
+			<column name="name" value="ROLE_CREATE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="10"/>
+			<column name="name" value="ROLE_READ"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="11"/>
+			<column name="name" value="ROLE_UPDATE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+
+		<insert tableName="permissions">
+			<column name="id" valueNumeric="12"/>
+			<column name="name" value="ROLE_DELETE"/>
+			<column name="created_date" valueDate="NOW()"/>
+			<column name="created_by" valueNumeric="1"/>
+			<column name="last_modified_date" valueDate="NOW()"/>
+			<column name="last_modified_by" valueNumeric="1"/>
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>

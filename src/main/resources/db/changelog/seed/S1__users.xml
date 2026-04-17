@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+	<!-- USER -->
+	<changeSet id="seed-system-user" author="system">
+		<insert tableName="users">
+			<column name="first_name" value="System"/>
+			<column name="last_name" value="Admin"/>
+			<column name="username" value="system"/>
+			<column name="email" value="system@local"/>
+			<column name="phone" value="000000000"/>
+			<column name="password"
+			        value="$2a$10$Dow1zE6vJ7sY9l9k9hXx3eFzqW9VZlYq0vKQ1QzQzQzQzQzQzQzQK"/>
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>

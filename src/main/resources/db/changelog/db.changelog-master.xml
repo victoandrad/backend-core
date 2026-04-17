@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- MIGRATIONS -->
+	<include file="db/changelog/migrations/V1__create_users.xml"/>
+	<include file="db/changelog/migrations/V2__create_permissions.xml"/>
+	<include file="db/changelog/migrations/V3__create_roles.xml"/>
+	<include file="db/changelog/migrations/V4__create_user_roles.xml"/>
+	<include file="db/changelog/migrations/V5__create_user_permissions.xml"/>
+	<include file="db/changelog/migrations/V6__create_user_denied_permissions.xml"/>
+	<include file="db/changelog/migrations/V7__create_role_permissions.xml"/>
+
+	<!-- SEEDS -->
+	<include file="/db/changelog/seed/S1__users.xml"/>
+	<include file="/db/changelog/seed/S2__permissions.xml"/>
+	<include file="/db/changelog/seed/S3__roles.xml"/>
+	<include file="/db/changelog/seed/S4__role_permissions.xml"/>
+	<include file="/db/changelog/seed/S5__user_roles.xml"/>
+
+</databaseChangeLog>
