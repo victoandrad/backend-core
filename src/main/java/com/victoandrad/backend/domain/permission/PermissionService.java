@@ -1,7 +1,7 @@
 package com.victoandrad.backend.domain.permission;
 
-import com.victoandrad.backend.domain.permission.dto.PermissionCreateRequest;
-import com.victoandrad.backend.domain.permission.dto.PermissionResponse;
+import com.victoandrad.backend.domain.permission.dto.request.PermissionCreateRequest;
+import com.victoandrad.backend.domain.permission.dto.response.PermissionResponse;
 import com.victoandrad.backend.shared.exception.NotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +31,7 @@ public class PermissionService {
     // METHODS
     // ==============================
 
+    @Transactional
     public List<PermissionResponse> findAll() {
         return permissionRepository
                 .findAll()
@@ -39,6 +40,7 @@ public class PermissionService {
                 .toList();
     }
 
+    @Transactional
     public PermissionResponse findById(Long id) {
         return permissionRepository
                 .findById(id)

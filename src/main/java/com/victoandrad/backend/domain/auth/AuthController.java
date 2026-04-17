@@ -1,9 +1,9 @@
 package com.victoandrad.backend.domain.auth;
 
-import com.victoandrad.backend.domain.auth.dto.LoginRequest;
-import com.victoandrad.backend.domain.auth.dto.RegisterRequest;
-import com.victoandrad.backend.domain.auth.dto.LoginResponse;
-import com.victoandrad.backend.domain.auth.dto.RegisterResponse;
+import com.victoandrad.backend.domain.auth.dto.request.LoginRequest;
+import com.victoandrad.backend.domain.auth.dto.request.RegisterRequest;
+import com.victoandrad.backend.domain.auth.dto.response.LoginResponse;
+import com.victoandrad.backend.domain.auth.dto.response.RegisterResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

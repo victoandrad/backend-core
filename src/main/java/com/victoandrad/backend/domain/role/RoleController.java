@@ -1,8 +1,9 @@
 package com.victoandrad.backend.domain.role;
 
-import com.victoandrad.backend.domain.role.dto.RoleCreateRequest;
-import com.victoandrad.backend.domain.role.dto.RoleUpdateRequest;
-import com.victoandrad.backend.domain.role.dto.RoleResponse;
+import com.victoandrad.backend.domain.role.dto.request.RoleCreateRequest;
+import com.victoandrad.backend.domain.role.dto.request.RoleUpdateRequest;
+import com.victoandrad.backend.domain.role.dto.response.RoleDetailResponse;
+import com.victoandrad.backend.domain.role.dto.response.RoleSummaryResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,14 +35,14 @@ public class RoleController {
     // ==============================
 
     @GetMapping
-    public ResponseEntity<List<RoleResponse>> findAll() {
+    public ResponseEntity<List<RoleSummaryResponse>> findAll() {
         return ResponseEntity.ok(roleService.findAll());
     }
 
     // ==============================
 
     @GetMapping("/{id}")
-    public ResponseEntity<RoleResponse> findById(
+    public ResponseEntity<RoleDetailResponse> findById(
             @PathVariable Long id
     ) {
         return ResponseEntity.ok(roleService.findById(id));
@@ -50,17 +51,17 @@ public class RoleController {
     // ==============================
 
     @PostMapping
-    public ResponseEntity<RoleResponse> insert(
+    public ResponseEntity<RoleDetailResponse> insert(
             @RequestBody @Valid RoleCreateRequest request
     ) {
-        RoleResponse response = roleService.insert(request);
+        RoleDetailResponse response = roleService.insert(request);
         return ResponseEntity.status(201).body(response);
     }
 
     // ==============================
 
     @PutMapping("/{id}")
-    public ResponseEntity<RoleResponse> update(
+    public ResponseEntity<RoleDetailResponse> update(
             @PathVariable Long id,
             @RequestBody @Valid RoleUpdateRequest request
     ) {

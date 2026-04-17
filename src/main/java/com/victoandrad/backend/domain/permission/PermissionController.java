@@ -1,7 +1,7 @@
 package com.victoandrad.backend.domain.permission;
 
-import com.victoandrad.backend.domain.permission.dto.PermissionCreateRequest;
-import com.victoandrad.backend.domain.permission.dto.PermissionResponse;
+import com.victoandrad.backend.domain.permission.dto.request.PermissionCreateRequest;
+import com.victoandrad.backend.domain.permission.dto.response.PermissionResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

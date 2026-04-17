@@ -1,18 +1,19 @@
-package com.victoandrad.backend.domain.role.dto;
+package com.victoandrad.backend.domain.role.dto.response;
 
 import com.victoandrad.backend.domain.role.Role;
-import com.victoandrad.backend.domain.permission.dto.PermissionResponse;
+import com.victoandrad.backend.domain.permission.dto.response.PermissionResponse;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public record RoleResponse(
+public record RoleDetailResponse(
         Long id,
         String name,
         Set<PermissionResponse> permissions
 ) {
-    public static RoleResponse fromEntity(Role role) {
-        return new RoleResponse(
+
+    public static RoleDetailResponse fromEntity(Role role) {
+        return new RoleDetailResponse(
                 role.getId(),
                 role.getName(),
                 role.getPermissions()

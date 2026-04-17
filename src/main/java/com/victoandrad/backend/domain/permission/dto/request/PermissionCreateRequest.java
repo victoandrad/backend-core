@@ -1,4 +1,4 @@
-package com.victoandrad.backend.domain.permission.dto;
+package com.victoandrad.backend.domain.permission.dto.request;
 
 import com.victoandrad.backend.domain.permission.Permission;
 import jakarta.validation.constraints.NotBlank;
@@ -11,6 +11,7 @@ public record PermissionCreateRequest(
         String name
 
 ) {
+
     public static Permission toEntity(PermissionCreateRequest request) {
         return new Permission(
                 request.name()

@@ -1,4 +1,4 @@
-package com.victoandrad.backend.domain.role.dto;
+package com.victoandrad.backend.domain.role.dto.request;
 
 import jakarta.validation.constraints.NotEmpty;
 

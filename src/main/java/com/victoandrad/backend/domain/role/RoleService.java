@@ -1,10 +1,11 @@
 package com.victoandrad.backend.domain.role;
 
 import com.victoandrad.backend.domain.permission.Permission;
+import com.victoandrad.backend.domain.role.dto.response.RoleSummaryResponse;
 import com.victoandrad.backend.domain.user.UserRepository;
-import com.victoandrad.backend.domain.role.dto.RoleCreateRequest;
-import com.victoandrad.backend.domain.role.dto.RoleUpdateRequest;
-import com.victoandrad.backend.domain.role.dto.RoleResponse;
+import com.victoandrad.backend.domain.role.dto.request.RoleCreateRequest;
+import com.victoandrad.backend.domain.role.dto.request.RoleUpdateRequest;
+import com.victoandrad.backend.domain.role.dto.response.RoleDetailResponse;
 import com.victoandrad.backend.domain.permission.PermissionRepository;
 import com.victoandrad.backend.shared.exception.BusinessException;
 import com.victoandrad.backend.shared.exception.NotFoundException;
@@ -49,28 +50,28 @@ public class RoleService {
     // ==============================
 
     @Transactional
-    public List<RoleResponse> findAll() {
+    public List<RoleSummaryResponse> findAll() {
         return roleRepository
                 .findAll()
                 .stream()
-                .map(RoleResponse::fromEntity)
+                .map(RoleSummaryResponse::fromEntity)
                 .toList();
     }
 
     // ==============================
 
     @Transactional
-    public RoleResponse findById(Long id) {
+    public RoleDetailResponse findById(Long id) {
         return roleRepository
                 .findById(id)
-                .map(RoleResponse::fromEntity)
+                .map(RoleDetailResponse::fromEntity)
                 .orElseThrow(() -> new NotFoundException("Role not found"));
     }
 
     // ==============================
 
     @Transactional
-    public RoleResponse insert(RoleCreateRequest request) {
+    public RoleDetailResponse insert(RoleCreateRequest request) {
 
         if (roleRepository.existsByName(request.name())) {
             throw new BusinessException("Role already exists");
@@ -89,13 +90,13 @@ public class RoleService {
 
         permissions.forEach(role::addPermission);
 
-        return RoleResponse.fromEntity(roleRepository.save(role));
+        return RoleDetailResponse.fromEntity(roleRepository.save(role));
     }
 
     // ==============================
 
     @Transactional
-    public RoleResponse update(Long id, RoleUpdateRequest request) {
+    public RoleDetailResponse update(Long id, RoleUpdateRequest request) {
 
         Role role = roleRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Role not found"));
@@ -110,7 +111,7 @@ public class RoleService {
 
         role.setPermissions(permissions);
 
-        return RoleResponse.fromEntity(role);
+        return RoleDetailResponse.fromEntity(role);
     }
 
     // ==============================
