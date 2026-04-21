@@ -12,6 +12,15 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
+  mail:
+    host: ${EMAIL_HOST}
+    port: ${EMAIL_PORT}
+    username: ${EMAIL_USER}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
   jpa:
     hibernate:
       ddl-auto: validate
@@ -29,3 +38,7 @@ spring:
 jwt:
   secret: ${JWT_SECRET}
   expiration-time: ${JWT_EXPIRATION}
+
+app:
+  mail:
+    from: ${EMAIL_FROM}
