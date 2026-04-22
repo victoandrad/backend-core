@@ -1,5 +1,6 @@
 package com.victoandrad.backend.infra.debug;
 
+import com.victoandrad.backend.infra.email.EmailMessage;
 import com.victoandrad.backend.infra.email.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,11 +33,11 @@ public class EmailTestController {
 
     @PostMapping
     public ResponseEntity<String> sendEmail() {
-        emailSender.send(
-                "victoandrad@edu.unifil.br",
+        emailSender.send(new EmailMessage(
+                "vitorfatobene@edu.unifil.br",
                 "Testing",
                 "Working"
-        );
-        return ResponseEntity.ok("String");
+        ));
+        return ResponseEntity.ok("Email enviado");
     }
 }
